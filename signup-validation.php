@@ -20,14 +20,18 @@
             $result = $conn->query($check_email);
 
             if ($result->num_rows > 0) {
-                echo '<script>alert("Email already exists. Please use a different email.");</script>';
+                echo '<script>alert("Email already exists. Please use a different email.");
+                
+                </script>';
             } else {
                 // Insert data into database
                 $sql = "INSERT INTO user_data (full_name, email, mobile_number, country, password) 
                         VALUES ('$full_name', '$email', '$mobile_number', '$country', '$hashed_password')";
 
                 if ($conn->query($sql) === TRUE) {
-                    echo '<script>alert("Account created successfully!");</script>';
+                    echo '<script>alert("Account created successfully!");
+                    window.location.href = "index.html";
+                    </script>';
                 } else {
                     echo "Error: " . $sql . "<br>" . $conn->error;
                 }
